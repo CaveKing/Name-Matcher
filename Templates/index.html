@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ระบบจับคู่ชื่อ</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>✨ ระบบจับคู่ชื่ออัตโนมัติ</h1>
+
+    <form method="POST">
+        <textarea name="names" placeholder="ตัวอย่าง:
+0699,ชไมพร
+2407,ภัทรานิษฐ์
+0293,สวรส"></textarea>
+        <button type="submit">จับคู่</button>
+    </form>
+
+    {% if results %}
+    <div class="results">
+        <h2>ผลลัพธ์</h2>
+        <table>
+            <tr>
+                <th>รหัส</th>
+                <th>ชื่อ</th>
+            </tr>
+            {% for row in results %}
+            <tr>
+                <td>{{ row.id_pair }}</td>
+                <td>{{ row.name_pair }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
